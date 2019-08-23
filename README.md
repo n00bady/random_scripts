@@ -8,4 +8,5 @@ What each script is:
 needs [slop](https://github.com/naelstrof/slop) to work and a terminal that accept window dimensions through 
 an argument.
 * **snowjob** stollen from https://gist.github.com/sontek/1505483
+* ogg-cover-art stollen from https://github.com/acabal/scripts/blob/master/ogg-cover-art it's a script that helps you add cover images to .ogg files.
 * _to be continued..._
