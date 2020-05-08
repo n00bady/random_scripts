@@ -8,5 +8,8 @@ What each script is:
 needs [slop](https://github.com/naelstrof/slop) to work and a terminal that accept window dimensions through 
 an argument.
 * **snowjob** stollen from https://gist.github.com/sontek/1505483
-* ogg-cover-art stollen from https://github.com/acabal/scripts/blob/master/ogg-cover-art it's a script that helps you add cover images to .ogg files.
+* **ogg-cover-art** stollen from https://github.com/acabal/scripts/blob/master/ogg-cover-art it's a script that helps you add cover images to .ogg files.
+* **ytdl.sh** A half-assed bash script to download a video from youtube using youtube-dl convert it to audio file and
+    add a cover picture(requires the **ogg-cover-art** script).
 * _to be continued..._
+
