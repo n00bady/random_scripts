@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Simple battery notification bash script for running as a cronjob
+# Simple battery notification bash script for running as a root cron job
 # Shuting down if battery lower than 15%
 
 # Need to find my dbus session first
@@ -16,13 +16,10 @@ battery="$(acpi -b | cut -d "," -f 2)"
 battery=${battery::-1}
 
 if [ $battery_state = "Discharging" ]; then
-    if [ $battery -lt 15 ]; then
-        notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' "Battery at $battery %, shutting down in 1 minute"
-        sleep 50
-        notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' '10 seconds for shutdown!'
-        sleep 10
-        # TODO: This doesn't seem to work...
-        dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true
+    if [ $battery -lt 24 ]; then
+        notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 -u critical 'Battery Warning!' "Battery at $battery %, shutting down in 1 minute"
+        sleep 1
+        /usr/bin/shutdown -P +1 "Low battery, shutting down system in 1min..."
     elif [ $battery -lt 25 ]; then
         notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' "$battery %"
     else
