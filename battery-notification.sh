@@ -16,14 +16,17 @@ battery="$(acpi -b | cut -d "," -f 2)"
 battery=${battery::-1}
 
 if [ $battery_state = "Discharging" ]; then
-    if [ $battery -lt 25 ]; then
-        notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' "$battery %"
-    elif [ $battery -lt 15 ]; then
+    if [ $battery -lt 15 ]; then
         notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' "Battery at $battery %, shutting down in 1 minute"
         sleep 50
         notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' '10 seconds for shutdown!'
         sleep 10
+        # TODO: This doesn't seem to work...
         dbus-send --system --print-reply --dest=org.freedesktop.login1 /org/freedesktop/login1 "org.freedesktop.login1.Manager.PowerOff" boolean:true
+    elif [ $battery -lt 25 ]; then
+        notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 'Battery Warning!' "$battery %"
+    else
+        :
     fi
 else
     :
