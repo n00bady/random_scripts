@@ -16,7 +16,7 @@ battery="$(acpi -b | cut -d "," -f 2)"
 battery=${battery::-1}
 
 if [ $battery_state = "Discharging" ]; then
-    if [ $battery -lt 24 ]; then
+    if [ $battery -lt 15 ]; then
         notify-send -i /usr/share/icons/Ultimate-Punk-Suru++/devices/32/battery.svg -t 5000 -u critical 'Battery Warning!' "Battery at $battery %, shutting down in 1 minute"
         sleep 1
         /usr/bin/shutdown -P +1 "Low battery, shutting down system in 1min..."
