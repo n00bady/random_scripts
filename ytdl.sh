@@ -20,6 +20,7 @@ NC='\033[0m'    # No Colour
 # Print the title of the youtube video that going to be downloaded
 title=$(youtube-dl -e "$1")
 printf "Downloading $title"
+echo " "
 
 youtube-dl $1
 # Check if youtube-dl was successfull in downloading and converting the youtube video
