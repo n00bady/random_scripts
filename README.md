@@ -15,5 +15,6 @@ an argument.
     IPs that failed to login.
 * **blog_update.sh** A script to update my jekyll blog whenever I push a new post to the repo. (Needs work doesn't run
     from cron.)
+* **battery_notification.sh** A script to run as a cron job to check and notify of low battery, it also shutsdown the system if it gets too low.
 * _to be continued..._
 
