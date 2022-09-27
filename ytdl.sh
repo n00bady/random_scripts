@@ -44,8 +44,8 @@ if [ $? -ne 0 ]; then
 fi
 
 # Delete the thumbnail after successfully adding it as a cover art
-prinf "Deleting the thumbnail, it's not needed anymore...\n"
-rm $HOME/Downloads/youtube-dl/$title.jpg
+printf "Deleting the thumbnail, it's not needed anymore...\n"
+rm "$HOME/Downloads/youtube-dl/$title.jpg"
 
 ### old code
 # Screenshots are named after a part of the youtube url, like watch?v=0ITtEEsiINM, so I cut only that part of the
