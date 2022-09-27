@@ -47,21 +47,4 @@ fi
 printf "Deleting the thumbnail, it's not needed anymore...\n"
 rm "$HOME/Downloads/youtube-dl/$title.jpg"
 
-### old code
-# Screenshots are named after a part of the youtube url, like watch?v=0ITtEEsiINM, so I cut only that part of the
-# supplied url and use it as a name to find and convert that screenshot and that screenshot only
-# yturl="$1"
-# ss_name="$(echo $yturl | cut -d'/' -f4)"
-# convert "$HOME/Pictures/mpv/$ss_name.png" "$HOME/Downloads/youtube-dl/$title.jpg"
-# cd $HOME/Downloads/youtube-dl/
-# $HOME/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
-# # Check if the previous command exited with error and if yes print a warning and exit
-# if [ $? -ne 0 ]; then
-#     printf "${Yellow}WARNING!${NC} Could not add cover image in the .ogg file for some reason ¯\_(ツ)_/¯ \n"
-#     exit 0
-# fi
-#
-# # Delete the screenshot and the cover image
-# rm "$HOME/Pictures/mpv/$ss_name.png"
-# rm "$HOME/Downloads/youtube-dl/$title.jpg"
 
