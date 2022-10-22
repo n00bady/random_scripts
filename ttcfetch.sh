@@ -6,7 +6,7 @@ TTC_Path="/mnt/d6f352a2-5fc3-42ed-8bef-e465e7933828/SSD_SteamLibrary/steamapps/c
 echo -e "\e[35m================================================================================\e[0m"
 
 echo -e "\e[32mChanging to Downloads folder...\e[0m"
-cd $HOME/Downloads/ &&
+cd "$HOME/Downloads/" &&
 
 echo -e "\e[32mDownloading TTC PriceTables for EU...\e[0m"
 wget https://eu.tamrieltradecentre.com/download/PriceTable &&
@@ -16,7 +16,7 @@ echo -e "\e[32mUnziping the PriceTable and moving it to TamrielTradeCentre addon
 unzip -o PriceTable -d "$TTC_Path" &&
 
 echo -e "\n\e[32mDeleting the Pricetable file from Downloads...\e[0m"
-rm $HOME/Downloads/PriceTable &&
+rm "$HOME/Downloads/PriceTable" &&
 
 echo -e "\n\e[32mFINISHED!!\e[0m\n"
 
