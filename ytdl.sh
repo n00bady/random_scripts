@@ -22,15 +22,15 @@ DIR="$HOME/Downloads/youtube-dl"
 
 if [[ -d "$DIR" ]]
 then
-  printf "$DIR exists.\n"
+  printf "${Green}%s exists.${NC}\n" "$DIR"
 else
-  printf "Creating $DIR ...\n"
+  printf "${Green}Creating %s ...${NC}\n" "$DIR"
   mkdir "$DIR"
 fi
 
 # Print the title of the youtube video that's going to be downloaded
 title=$(yt-dlp --skip-download --get-title "$1")
-printf "${Green}Downloading${NC} $title${Geen}...${NC}\n"
+printf "${Green}Downloading${NC} %s${Green}...${NC}\n" "$title"
 
 # Download the video and it's thumbnail(thumbnails get converting to jpg)
 yt-dlp --write-thumbnail --convert-thumbnails jpg $1
@@ -42,12 +42,12 @@ fi
 
 # Add the thumbnail that we downloaded as a cover art with the help of ogg-cover-art.sh script
 printf "${Green}Adding cover art...${NC}\n"
-cd $DIR/
-$HOME/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
+cd "$DIR/" || exit
+"$HOME"/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
 # Check if it was successfull, if not then exit without deleting the thumbnail
 if [ $? -ne 0 ]; then
   printf "${Yellow}WARNING!${NC} Could not add cover image in the .ogg file for some reason ¯\_(ツ)_/¯ \n"
-  printf "The downloaded thumbnail will be preserved in $DIR/$title.jpg\n"
+  printf "The downloaded thumbnail will be preserved in %s/%s.jpg\n" "$DIR" "$title"
   printf "${Yellow}Exiting...${NC}\n"
   exit 0
 fi
@@ -55,5 +55,4 @@ fi
 # Delete the thumbnail after successfully adding it as a cover art
 printf "Deleting the thumbnail, it's not needed anymore...\n"
 rm "$DIR/$title.jpg"
-
 
