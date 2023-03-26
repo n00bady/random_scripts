@@ -16,5 +16,6 @@ an argument.
 * **blog_update.sh** A script to update my jekyll blog whenever I push a new post to the repo. (Needs work doesn't run
     from cron.)
 * **battery_notification.sh** A script to run as a cron job to check and notify of low battery, it also shutsdown the system if it gets too low.
+* **ttcfetch.sh** Small script to download the pricetables from [TamrielTradeCentre](https://tamrieltradecentre.com/). It set specifically for me but you can change the the target and which priectable to download in the script.
 * _to be continued..._
 
