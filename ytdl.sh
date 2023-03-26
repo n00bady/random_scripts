@@ -33,11 +33,11 @@ title=$(yt-dlp --skip-download --get-title "$1")
 printf "${Green}Downloading${NC} %s${Green}...${NC}\n" "$title"
 
 # Download the video and it's thumbnail(thumbnails get converting to jpg)
-yt-dlp --write-thumbnail --convert-thumbnails jpg $1
+# yt-dlp --write-thumbnail --convert-thumbnails jpg $1
 # Check if yt-dlp was successfull in downloading and converting the youtube video
-if [ $? -ne 0 ]; then
+if ! yt-dlp --write-thumbnail --convert-thumbnails jpg "$1"; then
     printf "${Red}FAILED!${NC} To download the youtube video!\n"
-    exit 1
+    exit 1 
 fi
 
 # Add the thumbnail that we downloaded as a cover art with the help of ogg-cover-art.sh script
@@ -45,11 +45,11 @@ printf "${Green}Adding cover art...${NC}\n"
 cd "$DIR/" || exit
 "$HOME"/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
 # Check if it was successfull, if not then exit without deleting the thumbnail
-if [ $? -ne 0 ]; then
+if ! "$HOME"/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"; then
   printf "${Yellow}WARNING!${NC} Could not add cover image in the .ogg file for some reason ¯\_(ツ)_/¯ \n"
   printf "The downloaded thumbnail will be preserved in %s/%s.jpg\n" "$DIR" "$title"
   printf "${Yellow}Exiting...${NC}\n"
-  exit 0
+  exit 0  
 fi
 
 # Delete the thumbnail after successfully adding it as a cover art
