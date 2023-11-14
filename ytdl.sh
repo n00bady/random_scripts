@@ -43,7 +43,7 @@ fi
 # Add the thumbnail that we downloaded as a cover art with the help of ogg-cover-art.sh script
 printf "${Green}Adding cover art...${NC}\n"
 cd "$DIR/" || exit
-"$HOME"/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
+"$HOME"/Documents/gits/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
 # Check if it was successfull, if not then exit without deleting the thumbnail
 if ! "$HOME"/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"; then
   printf "${Yellow}WARNING!${NC} Could not add cover image in the .ogg file for some reason ¯\_(ツ)_/¯ \n"

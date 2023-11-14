@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Replace with the absolute path for your the TTC addon directory (usually it's in <path to steam library>/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/My Documents/Elder Scrolls Online/live/AddOns/TamrielTradeCentre)
-TTC_Path="/mnt/d6f352a2-5fc3-42ed-8bef-e465e7933828/SSD_SteamLibrary/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/My Documents/Elder Scrolls Online/live/AddOns/TamrielTradeCentre/"
+TTC_Path="/run/media/jon/SSD1/SSD_SteamLibrary/steamapps/compatdata/306130/pfx/drive_c/users/steamuser/My Documents/Elder Scrolls Online/live/AddOns/TamrielTradeCentre/"
 
 echo -e "\e[35m================================================================================\e[0m"
 
