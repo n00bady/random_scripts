@@ -19,6 +19,7 @@ Green='\033[0;32m'
 Yellow='\033[1;33m'
 NC='\033[0m'    # Reset Color
 DIR="$HOME/Downloads/youtube-dl"
+oggart="$HOME/Documents/gits/random_scripts/ogg-cover-art.sh"
 
 if [[ -d "$DIR" ]]
 then
@@ -43,9 +44,9 @@ fi
 # Add the thumbnail that we downloaded as a cover art with the help of ogg-cover-art.sh script
 printf "${Green}Adding cover art...${NC}\n"
 cd "$DIR/" || exit
-"$HOME"/Documents/gits/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"
+$oggart "$title.jpg" "$title.ogg"
 # Check if it was successfull, if not then exit without deleting the thumbnail
-if ! "$HOME"/Documents/random_scripts/ogg-cover-art.sh "$title.jpg" "$title.ogg"; then
+if ! $oggart "$title.jpg" "$title.ogg"; then
   printf "${Yellow}WARNING!${NC} Could not add cover image in the .ogg file for some reason ¯\_(ツ)_/¯ \n"
   printf "The downloaded thumbnail will be preserved in %s/%s.jpg\n" "$DIR" "$title"
   printf "${Yellow}Exiting...${NC}\n"
