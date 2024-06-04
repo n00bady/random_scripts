@@ -36,7 +36,7 @@ printf "${Green}Downloading${NC} %s${Green}...${NC}\n" "$title"
 # Download the video and it's thumbnail(thumbnails get converting to jpg)
 # yt-dlp --write-thumbnail --convert-thumbnails jpg $1
 # Check if yt-dlp was successfull in downloading and converting the youtube video
-if ! yt-dlp --write-thumbnail --convert-thumbnails jpg "$1"; then
+if ! yt-dlp --write-thumbnail --convert-thumbnails jpg -x --audio-format vorbis --audio-quality 0 -o "$DIR/%(title)s.%(ext)s" "$1"; then
     printf "${Red}FAILED!${NC} To download the youtube video!\n"
     exit 1 
 fi
