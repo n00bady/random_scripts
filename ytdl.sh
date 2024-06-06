@@ -32,6 +32,9 @@ fi
 # Print the title of the youtube video that's going to be downloaded
 title=$(yt-dlp --skip-download --get-title "$1")
 printf "${Green}Downloading${NC} %s${Green}...${NC}\n" "$title"
+# some unicode charachters are replaced e.g. Big Solidus is replaced with a regular slash
+# while in -o flag when you use %(title) it come correctly as big solidus
+# this behavious makes me wanna kill little puppies!
 
 # Download the video and it's thumbnail(thumbnails get converting to jpg)
 # yt-dlp --write-thumbnail --convert-thumbnails jpg $1
@@ -44,9 +47,10 @@ fi
 # Add the thumbnail that we downloaded as a cover art with the help of ogg-cover-art.sh script
 printf "${Green}Adding cover art...${NC}\n"
 cd "$DIR/" || exit
-$oggart "$title.jpg" "$title.ogg"
+# $oggart "$title.jpg" "$title.ogg"
 # Check if it was successfull, if not then exit without deleting the thumbnail
-if ! $oggart "$title.jpg" "$title.ogg"; then
+# This will not work in some cases because as previously mentioned --get-title doesn't return all unicode chars intact
+if ! "$oggart" "${title}.jpg" "${title}.ogg"; then
   printf "${Yellow}WARNING!${NC} Could not add cover image in the .ogg file for some reason ¯\_(ツ)_/¯ \n"
   printf "The downloaded thumbnail will be preserved in %s/%s.jpg\n" "$DIR" "$title"
   printf "${Yellow}Exiting...${NC}\n"
