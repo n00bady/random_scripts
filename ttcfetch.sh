@@ -14,7 +14,7 @@ wget https://eu.tamrieltradecentre.com/download/PriceTable &&
 
 # The destination path changes depending on how you have ESO installed !!!
 echo -e "\e[32mUnziping the PriceTable and moving it to TamrielTradeCentre addon folder...\e[0m"
-unzip -o PriceTable -d "$TTC_Path" &&
+unzip -o PriceTable -d "$TTC_PATH" &&
 
 echo -e "\n\e[32mDeleting the Pricetable file from Downloads...\e[0m"
 rm "$HOME/Downloads/PriceTable" &&
